@@ -1,0 +1,401 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+
+input {
+    outline-color: invert;
+    outline-style: none;
+    outline-width: 0px;
+    border: none;
+    border-style: none;
+    text-shadow: none;
+    outline-color: transparent;
+    box-shadow: none;
+}
+
+/* 头部样式 */
+.header {
+    width: 100%;
+    height: 65px;
+    padding: 7px 14px;
+    box-sizing: border-box;
+    background-image: linear-gradient(to right, #111, #333, #fff);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("../imags//bg.png");
+}
+
+.header .logo {
+    width: 40px;
+    height: 40px;
+    background-image: url("../imags/bg.png");
+    vertical-align: middle;
+
+}
+
+.header .title {
+    position: absolute;
+    top: 10px;
+    left: 65px;
+}
+
+.header .title span {
+    display: inline-block;
+    margin-left: 8px;
+    text-shadow: 4px 2px 6px #ccc;
+    animation: jump 0.6s linear infinite alternate;
+}
+
+.header .title span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.header .title span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.header .title span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+        text-shadow: 4px 2px 6px #ccc;
+
+    }
+
+    100% {
+        transform: translateY(-15px);
+        text-shadow: 4px 6px 6px #ccc;
+
+
+    }
+
+}
+
+
+/* 内容区域 */
+/* 左侧导航栏 */
+.content {
+    height: calc(100% - 65px);
+    position: relative;
+    display: flex;
+}
+
+.content .left-list {
+    width: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #111, #333, rgb(99, 99, 99));
+    position: relative;
+    color: white;
+    padding-left: 21px;
+    padding-top: 21px;
+    z-index: 2014;
+    box-sizing: border-box;
+    min-height: 600px;
+}
+
+.content .left-list::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("../imags//bg.png");
+    z-index: -1;
+}
+
+.content .left-list dt {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+
+.content .left-list dd {
+    font-weight: 700;
+    font-size: 14px;
+    padding: 14px;
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.content .left-list dd:hover {
+    background: rgba(255, 255, 255, .3);
+
+}
+
+.content .left-list dd.active {
+    background: rgba(255, 255, 255, .3);
+
+}
+
+
+
+/* 右侧内容区 */
+.content .right-content {
+    background: #e5e5e5;
+    width: calc(100% - 200px);
+    box-sizing: border-box;
+    padding: 21px;
+    min-height: 600px;
+    overflow: auto;
+
+}
+
+
+/* 学生列表信息 */
+/* 默认当前模块为不显示 */
+.right-content .student-list {
+    display: none;
+}
+
+/* 只有class属性带有show的元素才能显示 */
+.content .right-content .show {
+    display: block;
+}
+
+.content .right-content .student-list .search {
+    font-weight: 700;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.content .right-content .student-list .search #search {
+    width: 180px;
+    height: 32px;
+    padding: 3px 5px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0 7px;
+    line-height: 32px;
+}
+
+.content .right-content .student-list .search #search:hover {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgb(0 123 255 / 25%);
+}
+
+.content .right-content .student-list .search .search-btn {
+    width: 52px;
+    height: 32px;
+    color: #fff;
+    background-color: #1d2124;
+    border-color: #171a1d;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content .right-content .student-list .search .search-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgb(82 88 93 / 50%);
+
+}
+
+
+/* 学生信息表 */
+
+.content .right-content .student-list .student-data {
+    min-height: 300px;
+    position: relative;
+}
+
+.content .right-content .student-list .student-data table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+}
+
+.content .right-content .student-list .student-data table thead {
+    background-color: #d6d8db;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+}
+
+.content .right-content .student-list .student-data table tbody tr {
+    background-color: #fff;
+    height: 55px;
+    line-height: 55px;
+    font-size: 14px;
+
+}
+
+.content .right-content .student-list .student-data table .edit-btn {
+    width: 50px;
+    height: 35px;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.content .right-content .student-list .student-data table .edit-btn:focus {
+
+    color: #fff;
+    background-color: #218838;
+    border-color: #1e7e34;
+    box-shadow: 0 0 0 0.2rem rgb(72 180 97 / 50%);
+}
+
+.content .right-content .student-list .student-data table .delete-btn {
+    width: 50px;
+    height: 35px;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content .right-content .student-list .student-data table .delete-btn:focus {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+    box-shadow: 0 0 0 0.2rem rgb(225 83 97 / 50%);
+}
+
+
+
+
+/* 新增学生信息样式 */
+
+.right-content .student-add {
+    display: none;
+}
+
+.content .right-content .student-add {
+    width: 50%;
+    margin-top: 45px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.content .right-content .student-add div {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.content .right-content .student-add div label:not(.sex) {
+    width: 30%;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.content .right-content .student-add input:not(.sex) {
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px 8px;
+    box-sizing: border-box;
+    width: 50%;
+
+}
+
+.content .right-content .student-add input:not(.sex):focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgb(0 123 255 / 25%);
+}
+
+.content .right-content .student-add div label.sex {
+    width: 10%;
+    padding-left: 15px;
+}
+
+.content .right-content .student-add div #add-add-btn,
+.content .right-content .student-add div #add-reset-btn {
+    width: 10%;
+    margin-left: 20px;
+    height: 35px;
+    position: absolute;
+    top: 5px;
+    cursor: pointer;
+
+}
+
+.content .right-content .student-add div #add-add-btn {
+    right: 300px;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.content .right-content .student-add div #add-add-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgb(72 180 97 / 50%);
+
+}
+
+.content .right-content .student-add div #add-reset-btn {
+    right: 200px;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+
+}
+
+.content .right-content .student-add div #add-reset-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgb(130 138 145 / 50%);
+}
+
+
+
+
+
+.right-content .student-echars {
+    display: none;
+    padding: 20px;
+}
+
+.right-content .student-echars .address-echars,
+.right-content .student-echars .sex-echars {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    margin: 80px 50px 0 50px;
+    vertical-align: top;
+    border: 1px solid #000;
+}
+
+
+
+
+/* 编辑信息 */
+
+

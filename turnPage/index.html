@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻页</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- <ul class="page-wrapper">
+            <li class="up-page">上一页</li>
+            <li class="page-item">1</li>
+            <span class="page-circle">...</span>
+            <li class="page-item">4</li>
+            <li class="page-item">5</li>
+            <li class="page-item active">6</li>
+            <li class="page-item">7</li>
+            <li class="page-item">8</li>
+            <span class="page-circle">...</span>
+            <li class="page-item">10</li>
+            <li class="next-page">下一页</li>
+        </ul> -->
+    </div>
+    <script src="./index.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script>
+        // 记录请求到的学生数据
+        var studentData = [1,2,3,5,6,8,9,5,6];
+        // 请求数据  并且重新记录数据
+        // ajax({
+        //     method: "get",
+        //     url: "https://open.duyiedu.com/api/student/findAll",
+        //     data: {
+        //         appkey: "Mr_LZF_1602591891244"
+        //     },
+        //     isAsync: true,
+        //     callback: function (data) {
+        //         studentData = data.data;
+        //         // console.log(data);
+        //     }
+        // })
+        // 得到分页区域的容器
+        var wrapper = document.getElementsByClassName("wrapper")[0];
+        // 创建分页的实例
+        // 容器，总数据量，每页展示数量，当前页数
+        var turnPage = new TurnPage({
+            wrapper: wrapper,
+            total: studentData && studentData.length,
+            size: 1,
+            nowPage: 1,
+            callback: function (num) {
+                // this.nowPage = num;
+                // 
+
+                // 当前页面  num
+                // console.log(`当前页${num}`);
+            }
+        })
+
+        // 初始化页面
+        turnPage.init();
+
+
+
+
+
+    </script>
+</body>
+
+</html>

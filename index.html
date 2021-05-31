@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息系统</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./turnPage/index.css">
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo" src="./imags/logo.png"></img>
+        <div class="title">
+            <span>学</span>
+            <span>生</span>
+            <span>信</span>
+            <span>息</span>
+        </div>
+
+    </div>
+
+    <div class="content">
+        <div class="left-list">
+            <dl class="left-list-dl">
+                <dt>学生管理</dt>
+                <dd data-id="student-list" class="active">学生列表</dd>
+                <dd data-id="student-add">新增学生</dd>
+                <dd data-id="student-echars">统计图表</dd>
+            </dl>
+        </div>
+        <div class="right-content">
+            <div class="student-list show">
+                <div class="search">
+                    <label for="search">搜索:</label>
+                    <input type="text" id="search" placeholder="输入邮箱/学号/地址">
+                    <input type="button" value="搜索" class="search-btn">
+                </div>
+                <div class="student-data">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>邮箱</th>
+                                <th>年龄</th>
+                                <th>手机号</th>
+                                <th>住址</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody-list">
+                            <!-- <tr>
+                                <td>201823060585</td>
+                                <td>柳正峰</td>
+                                <td>男</td>
+                                <td>1132192506@qq.com</td>
+                                <td>22</td>
+                                <td>15569694820</td>
+                                <td>甘肃省平凉市崆峒区</td>
+                                <td>
+                                    <input type="button" value="编辑" class="edit-btn">
+                                    <input type="button" value="删除" class="delete-btn">
+                                </td>
+                            </tr> -->
+
+                        </tbody>
+                    </table>
+                    <div class="wrapper">
+
+                    </div>
+                </div>
+            </div>
+            <div class="student-add">
+                <form id="student-add-form">
+                    <div><label for="">学号:</label><input name="sNo" type="text"></div>
+                    <div><label for="">姓名:</label><input name="name" type="text"></div>
+                    <div><label for="">性别:</label>
+                        <input class="sex" type="radio" checked id="male" name="sex" value="0"><label class="sex"
+                            for="male">男</label>
+                        <input class="sex" type="radio" name="sex" id="female" value="1"><label class="sex"
+                            for="female">女</label>
+                    </div>
+                    <div><label for="">邮箱:</label><input name="email" type="text"></div>
+                    <div><label for="">出生年:</label><input name="birth" type="text"></div>
+                    <div><label for="">手机号:</label><input name="phone" type="text"></div>
+                    <div><label for="">地址:</label><input name="address" type="text"></div>
+                    <div><input type="button" id="add-add-btn" value="添加"><input type="reset" id="add-reset-btn"
+                            value="重置"></div>
+
+
+                </form>
+            </div>
+            <div class="student-echars">
+                <div class="address-echars"></div>
+
+                <div class="sex-echars"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="./js/ajax.js"></script>
+    <script src="./turnPage/index.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="https://lib.baomitu.com/echarts/5.1.1/echarts.common.js"></script>
+    <script src="./js/pie.js"></script>
+</body>
+
+</html>
