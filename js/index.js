@@ -128,11 +128,12 @@ tbody.onclick = function (e) {
                     sNo: sNo
                 },
                 callback: function (data) {
-                    alert(data.msg)
                     if (data.status == "success") {
                         // 删除成功后  重新渲染页面；
                         init();
                     }
+                    alert(data.msg)
+
                 }
             })
         }
@@ -261,8 +262,8 @@ addBtn.onclick = function (e) {
             if (data.status == "success") {
                 // 添加成功
                 // 跳回学生列表页面
-                window.onload();
-                // document.querySelector('[data-id=student-list]').click();
+                // window.onload();
+                document.querySelector('[data-id=student-list]').click();
             }
         }
     })
