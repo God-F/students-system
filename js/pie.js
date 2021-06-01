@@ -33,7 +33,7 @@
             var This = this;
             ajax({
                 method: "get",
-                url: "http://api.duyiedu.com/api/student/findAll",
+                url: "https://api.duyiedu.com/api/student/findAll",
                 isAsync: true,
                 data: {
                     appkey: "YYY_LZF_1621760641043"
