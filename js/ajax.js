@@ -9,6 +9,7 @@
 
 function ajax(options) {
     // options 请求参数对象
+    count++;
 
     // 对请求参数对象进行结构
     let { method, url, isAsync, data, callback } = options;
@@ -44,28 +45,28 @@ function ajax(options) {
     }
 
     // XMLHttpRequest.readyState   代表请求的状态码。
-            // readyState的值 0 - 4   
-            // 0 代表还没有进行数据交互  
-            // 1 代表还没有建立连接(open方法还没有执行) 
-            //  2 代表连接已经建立了 （open方法已经执行）
-            // 3 代表数据传递完成  （send方法执行完成）
-            //  4代表对方已经给了响应 
+    // readyState的值 0 - 4   
+    // 0 代表还没有进行数据交互  
+    // 1 代表还没有建立连接(open方法还没有执行) 
+    //  2 代表连接已经建立了 （open方法已经执行）
+    // 3 代表数据传递完成  （send方法执行完成）
+    //  4代表对方已经给了响应 
 
 
 
     // XMLHttpRequest.responseText  在一个请求被发送后，从服务器端返回文本。
     // XMLHttpRequest.status 返回了XMLHttpRequest 响应中的数字状态码。
-            //status == 200  网络请求，结果都会有一个状态码。来表示这个请求是否正常
-            //200表示请求成功
-            // http状态码
-            //2**表示成功
-            //3**表示重定向
-            //4**表示客户端错误,404页面没找到。
-            //5**表示服务端错误
+    //status == 200  网络请求，结果都会有一个状态码。来表示这个请求是否正常
+    //200表示请求成功
+    // http状态码
+    //2**表示成功
+    //3**表示重定向
+    //4**表示客户端错误,404页面没找到。
+    //5**表示服务端错误
 
 
 
-            
+
     // XMLHttpRequest.onreadystatechange  当 readyState 属性发生变化时，调用
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {

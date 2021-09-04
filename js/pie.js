@@ -4,6 +4,10 @@
             this.getData();
             // 初始化方法
             this.option = {   //两个图表里共同的配置
+                //数据提示配置项
+                tooltip: {
+                    trigger: 'item'
+                },
                 title: {
                     text: '',
                     subtext: '纯属虚构',
@@ -11,11 +15,14 @@
                 },
                 legend: {
                     data: [],
+                    //图例布局朝向
                     orient: 'vertical',
+                    //图例靠左
                     left: 'left',
                 },
                 series: {
                     name: '',
+                    // roseType: "area",
                     type: 'pie',
                     data: [],
                     radius: '55%',
@@ -36,7 +43,7 @@
                 url: "https://api.duyiedu.com/api/student/findAll",
                 isAsync: true,
                 data: {
-                    appkey: "YYY_LZF_1621760641043"
+                    appkey: "H_Wang_1622539034198"
                 },
                 callback: function (data) {
                     var list = data.data;

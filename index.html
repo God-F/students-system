@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+
+          content="width=device-width, initial-scale=1.0">
     <title>学生信息系统</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./turnPage/index.css">
+    <script src="js/ajax.js"></script>
 </head>
 
 <body>
@@ -18,6 +21,8 @@
             <span>生</span>
             <span>信</span>
             <span>息</span>
+            <span>系</span>
+            <span>统</span>
         </div>
 
     </div>
@@ -73,10 +78,33 @@
 
                     </div>
                 </div>
+                <div class="edit-data">
+                    <form id="student-edit-form">
+                        <h3>编辑信息</h3>
+                        <span></span>
+                        <div><label for="">学号:</label><input name="sNo" disabled type="text"></div>
+                        <div><label for="">姓名:</label><input name="name" type="text"></div>
+                        <div><label for="">性别:</label>
+                            <input class="sex" type="radio" checked id="male" name="sex" value="0"><label class="sex"
+                                for="male">男</label>
+                            <input class="sex" type="radio" name="sex" id="female" value="1"><label class="sex"
+                                for="female">女</label>
+                        </div>
+                        <div><label for="">邮箱:</label><input name="email" type="text"></div>
+                        <div><label for="">出生年:</label><input name="birth" type="text"></div>
+                        <div><label for="">手机号:</label><input name="phone" type="text"></div>
+                        <div><label for="">地址:</label><input name="address" type="text"></div>
+                        <div><input type="button" id="edit-add-btn" value="提交"><input type="reset" id="edit-reset-btn"
+                                value="重置"></div>
+                        <span></span>
+
+
+                    </form>
+                </div>
             </div>
             <div class="student-add">
                 <form id="student-add-form">
-                    <div><label for="">学号:</label><input name="sNo" type="text"></div>
+                    <div><label for="">学号:</label><input name="sNo"  type="text"></div>
                     <div><label for="">姓名:</label><input name="name" type="text"></div>
                     <div><label for="">性别:</label>
                         <input class="sex" type="radio" checked id="male" name="sex" value="0"><label class="sex"

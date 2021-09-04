@@ -1,3 +1,4 @@
+var count = 0
 // 存储所有学生信息
 var studentDataAll = [];
 // 首先获取所有人的信息  成功回调后 生成翻页按钮
@@ -6,19 +7,20 @@ var studentDataAll = [];
 
 // 获取第一页学生信息
 function init() {
+
     ajax({
         method: "get",
         url: "https://open.duyiedu.com/api/student/findAll",
         isAsync: true,
         data: {
-            appkey: "YYY_LZF_1621760641043"
+            appkey: "H_Wang_1622539034198"
         },
         callback: function (data) {
             studentDataAll = data.data;
             // 生成分页按钮
             // 当数据量大于5  也就是足够分页  就创建分页
             if (data.data.length > 5) {
-                creatPage()
+                creatPage();
             }
         }
     })
@@ -27,11 +29,12 @@ function init() {
         url: "https://open.duyiedu.com/api/student/findByPage",
         isAsync: true,
         data: {
-            appkey: "YYY_LZF_1621760641043",
+            appkey: "H_Wang_1622539034198",
             page: 1,
             size: 5
         },
         callback: function (data) {
+
             render(data.data.findByPage);
 
         }
@@ -77,13 +80,14 @@ searchBtn.onclick = function () {
         url: "https://open.duyiedu.com/api/student/searchStudent",
         isAsync: true,
         data: {
-            appkey: "YYY_LZF_1621760641043",
+            appkey: "H_Wang_1622539034198",
             search: value,
             sex: -1,
             page: 1,
             size: 5
         },
         callback: function (data) {
+
             if (data.status == "fail") {
                 alert(data.msg);
             } else if (data.status == "success")
@@ -109,12 +113,14 @@ searchBtn.onclick = function () {
 // 删除学生信息
 
 
-
+// 编辑表单
+var editForm = document.getElementById("student-edit-form");
 tbody.onclick = function (e) {
+    var index = e.target.dataset.index;
+    var nowData = studentDataAll[index];
     // console.log(e.target.value);
     if (e.target.value == "删除") {
         // 点击的是删除键
-        var index = e.target.dataset.index;
         var sNo = studentDataAll[index].sNo;
         // 发送请求删除数据
         var result = confirm(`确定删除学号为${sNo}的学生信息？`)
@@ -124,23 +130,48 @@ tbody.onclick = function (e) {
                 url: "https://open.duyiedu.com/api/student/delBySno",
                 isAsync: true,
                 data: {
-                    appkey: "YYY_LZF_1621760641043",
+                    appkey: "H_Wang_1622539034198",
                     sNo: sNo
                 },
                 callback: function (data) {
+
+                    alert(data.msg)
                     if (data.status == "success") {
                         // 删除成功后  重新渲染页面；
                         init();
                     }
-                    alert(data.msg)
-
                 }
             })
         }
 
 
     } else if (e.target.value == "编辑") {
+        // 出现编辑页面
+        document.getElementsByClassName("edit-data")[0].classList.add("show")
+        // 表单数据回填
+        reFormData(editForm, nowData);
+        // 点击提交按钮
+        document.getElementById("edit-add-btn").onclick = function(){
 
+            var formData = getFormData(editForm);
+            ajax({
+                method: "get",
+                url: "https://open.duyiedu.com/api/student/updateStudent",
+                isAsync: true,
+                data: {
+                    appkey: "H_Wang_1622539034198",
+                    ...formData
+                },
+                callback: function (data) {
+                    if (data.status == "success") {
+                        // 修改成功
+        
+                        window.location.reload();
+                        // document.querySelector('[data-id=student-list]').click();
+                    }
+                }
+            })
+        }
     }
     // 定时取消聚焦效果
     setTimeout(function () {
@@ -168,11 +199,12 @@ function creatPage() {
                 url: "https://open.duyiedu.com/api/student/findByPage",
                 isAsync: true,
                 data: {
-                    appkey: "YYY_LZF_1621760641043",
+                    appkey: "H_Wang_1622539034198",
                     page: num,
                     size: 5
                 },
                 callback: function (data) {
+
                     render(data.data.findByPage);
                 }
             })
@@ -254,16 +286,19 @@ addBtn.onclick = function (e) {
         url: "https://open.duyiedu.com/api/student/addStudent",
         isAsync: true,
         data: {
-            appkey: "YYY_LZF_1621760641043",
+            appkey: "H_Wang_1622539034198",
             ...formData
         },
         callback: function (data) {
+
             alert(data.msg)
             if (data.status == "success") {
                 // 添加成功
                 // 跳回学生列表页面
-                // window.onload();
-                document.querySelector('[data-id=student-list]').click();
+                window.location.hash = "student-list";
+
+                window.location.reload();
+                // document.querySelector('[data-id=student-list]').click();
             }
         }
     })
@@ -275,3 +310,28 @@ addBtn.onclick = function (e) {
 
 // 编辑
 
+// 数据回填
+var editForm = document.getElementById("student-edit-form");
+
+function reFormData(form, data) {
+    // 遍历对象
+    for (var prop in data) {
+        // console.log(prop);
+        // 表单中有没有对应的选项
+        if (form[prop]) {
+            form[prop].value = data[prop];
+        }
+    }
+}
+
+
+// 取消编辑  页面回退
+var editData = document.getElementsByClassName("edit-data")[0];
+editData.onclick = function (e) {
+    // 阻止冒泡
+    e.stopPropagation();
+    // 如果当前点击的是自身  就返回
+    if (e.target == this) {
+        this.classList.remove("show");
+    }
+}

@@ -289,7 +289,110 @@ input {
 }
 
 
+/* 编辑学生信息 */
+.content .right-content .student-list .edit-data {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: linear 0.5s;
 
+}
+
+.content .right-content .student-list .edit-data.show {
+
+    top: 0;
+}
+
+#student-edit-form {
+    display: block;
+    width: 300px;
+    height: 375px;
+    background: #fff;
+    padding: 60px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+#student-edit-form h3 {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+#student-edit-form label:not(.sex) {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 16px;
+}
+
+#student-edit-form label.sex {
+    width: 40px;
+    height: 25px;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+#student-edit-form input:not(.sex) {
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+#student-edit-form span {
+    display: block;
+    width: calc(100% + 120px);
+    height: 1px;
+    background: black;
+    margin-left: -60px;
+}
+
+#student-edit-form span:nth-of-type(1) {
+    top: 50px;
+    position: absolute;
+}
+
+
+#student-edit-form #edit-add-btn,
+#student-edit-form #edit-reset-btn {
+    height: 40px;
+    width: 80px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+#student-edit-form #edit-add-btn {
+    margin-left: 80px;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#student-edit-form #edit-reset-btn {
+    margin-left: 40px;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+
+#student-edit-form #edit-add-btn:focus,
+#student-edit-form #edit-reset-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgb(130 138 145 / 50%);
+}
 
 /* 新增学生信息样式 */
 
@@ -397,5 +500,3 @@ input {
 
 
 /* 编辑信息 */
-
-
